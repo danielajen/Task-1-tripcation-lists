@@ -6,7 +6,7 @@ namespace Task_1_lists
 {
     internal class Program
     {
-        
+
         static void Main(string[] args)
         {
             int adults = 0;
@@ -17,6 +17,7 @@ namespace Task_1_lists
             StreamReader file2 = new StreamReader("trip3.txt");
             List<string> Data = new List<string>();
 
+            if (file )
             string input = file.ReadLine();
             while (input != null)
             {
@@ -31,40 +32,13 @@ namespace Task_1_lists
                 }
                 input = file.ReadLine();
             }
-            input = file1.ReadLine();
-            while (input != null)
-            {
-                int age = int.Parse(input);
-                if (age >= 19)
-                {
-                    adults++;
-                }
-                else
-                {
-                    students++;
-                }
-                input = file1.ReadLine();
-            }
-            input = file2.ReadLine();
-            while (input != null)
-            {
-                int age = int.Parse(input);
-                if (age >= 19)
-                {
-                    adults++;
-                }
-                else
-                {
-                    students++;
-                }
-                input = file2.ReadLine();
-            }
             Console.WriteLine("welcome to Daniel's tripcation! ");
             // ratio from adults to students
             double ratio = (double)adults / students;
+
             if ((double)adults /10 == 0.1)
             {
-                Console.WriteLine("can go on trip " +ratio.ToString("0.00"));
+                Console.WriteLine("can go on trip ");
             }
             else
             {
@@ -77,11 +51,11 @@ namespace Task_1_lists
                 output.WriteLine("number of students: " + students);
                 if (adults == 0.1)
                 {
-                    output.WriteLine("can go on trip " + ratio.ToString("0.00"));
+                    output.WriteLine("can go on trip " + ratio);
                 }
                 else
                 {
-                    output.WriteLine(" sorry cannot go on trip, ratio is wack! too many youngins! " + ratio.ToString("0.00"));
+                    output.WriteLine(" sorry cannot go on trip, ratio is wack! too many youngins! " + ratio);
                 }
             }
             file.Close();
