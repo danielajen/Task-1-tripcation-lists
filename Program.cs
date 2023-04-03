@@ -12,12 +12,40 @@ namespace Task_1_lists
             int adults = 0;
             int students = 0;
             // files read
-            StreamReader file = new StreamReader("trip1.txt");
-            StreamReader file1 = new StreamReader("trip2.txt");
-            StreamReader file2 = new StreamReader("trip3.txt");
+            string filename = "trip1.txt";
+           
             List<string> Data = new List<string>();
+            // ask which trip and place filename paramters to answer
+            Console.WriteLine("which trip would you like to choose from?, Pick a num from 1-3");
+            int answer=0;
+            
 
-            if (file )
+
+
+            while (answer > 3 || answer < 1)
+            {
+                bool proper = int.TryParse(Console.ReadLine(), out answer);
+            while( proper == false )
+            {
+                Console.WriteLine("enter only numbers!");
+                proper = int.TryParse(Console.ReadLine(), out answer);
+            }
+                if ( answer > 3)
+                {
+                    proper = false;
+                    Console.WriteLine("Sory, they're only 3 options, only from 1-3");
+                }
+            }   
+                if (answer == 1) filename = "trip1.txt";
+                if (answer == 2) filename = "trip2.txt";
+                if (answer == 3) filename = "trip3.txt";
+            
+            
+           
+                 
+           
+
+            StreamReader file = new StreamReader(filename);
             string input = file.ReadLine();
             while (input != null)
             {
@@ -32,14 +60,16 @@ namespace Task_1_lists
                 }
                 input = file.ReadLine();
             }
-            Console.WriteLine("welcome to Daniel's tripcation! ");
+            file.Close();
+            Console.WriteLine("welcome to Daniel's tripcation!, let's see if you have a good ratio to book a trip ");
             // ratio from adults to students
             double ratio = (double)adults / students;
-
-            if ((double)adults /10 == 0.1)
+            // ratio has to be 0.1
+            if (ratio == 0.1)
             {
                 Console.WriteLine("can go on trip ");
             }
+            // not 0.1, cannot go
             else
             {
                 Console.WriteLine("cannot go on trip");
@@ -49,7 +79,7 @@ namespace Task_1_lists
             {
                 output.WriteLine("number of adults: " + adults);
                 output.WriteLine("number of students: " + students);
-                if (adults == 0.1)
+                if (ratio == 0.1)
                 {
                     output.WriteLine("can go on trip " + ratio);
                 }
@@ -58,9 +88,8 @@ namespace Task_1_lists
                     output.WriteLine(" sorry cannot go on trip, ratio is wack! too many youngins! " + ratio);
                 }
             }
-            file.Close();
-            file1.Close();
-            file2.Close();
+            
+            
         }
         }
     }
